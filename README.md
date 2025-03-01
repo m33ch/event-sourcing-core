@@ -162,8 +162,11 @@ export class CustomerSaga {
 ### Contributing
 
 Contributions, bug reports, and pull requests are welcome!
-Please see CONTRIBUTING for details.
+Please see [CONTRIBUTING](https://github.com/m33ch/event-sourcing-core/blob/main/CONTRIBUTING.md) for details.
+
+### Security
+We take security seriously. If you discover any security vulnerabilities, please refer to our [Security Policy](https://github.com/m33ch/event-sourcing-core/blob/main/.github/SECURITY.md) for reporting guidelines.
 
 ### License
 
-This project is licensed under the MIT License. See LICENSE for details.
+This project is licensed under the MIT License. See [LICENSE](https://github.com/m33ch/event-sourcing-core/blob/main/LICENSE.txt) for details.
