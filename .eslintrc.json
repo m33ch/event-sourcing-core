@@ -1,0 +1,12 @@
+{
+  "extends": "./node_modules/gts/",
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "semi": true,
+        "bracketSpacing": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+    "name": "event-sourcing-core",
+    "version": "1.0.0",
+    "description": "A generic Event Sourcing and Domain Event management library for Node.js (TypeScript). Provides core infrastructure for implementing Event Sourcing, Aggregate management, and sagas, without including command/query layers.",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "author": {
+        "name": "Alessandro Rovito",
+        "email": "alessandro.rovito@gmail.com"
+    },
+    "scripts": {
+      "build": "tsc -p tsconfig.build.json",
+      "test": "jest --coverage",
+      "clean": "rm -rf dist coverage tsconfig.build.tsbuildinfo"
+    },
+    "keywords": [
+      "arketic-code",
+      "event-sourcing",
+      "ddd",
+      "saga",
+      "clean-architecture"
+    ],
+    "license": "MIT",
+    "engines": {
+      "node": ">=16"
+    },
+    "devDependencies": {
+      "@types/jest": "^29.5.14",
+      "@types/node": "^22.13.4",
+      "gts": "^6.0.2",
+      "jest": "^29.7.0",
+      "ts-jest": "^29.2.5",
+      "ts-node": "^10.9.2",
+      "typescript": "^5.7.3"
+    },
+    "dependencies": {
+      "uuid": "^11.1.0"
+    }
+  }
