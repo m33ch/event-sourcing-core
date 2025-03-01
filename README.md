@@ -13,7 +13,7 @@ It does not include command or query layers, focusing solely on the event sourci
 - **Domain Events:** A base class (`BaseDomainEvent`) to create domain events with built-in support for correlation, causation tracking, and multi-tenancy.
 - **Domain Event Context:** Utilizes AsyncLocalStorage to manage correlation IDs and a stack of causation IDs for tracing event flows.
 - **Sagas:** Support for implementing sagas (process managers) to orchestrate long-running business processes.
-- **In-Memory & TypeORM Implementations:** Provides in-memory implementations for testing/demo and TypeORM adapters for persistence.
+- **In-Memory Implementations:** Provides in-memory implementations for testing/demo.
 
 ## Installation
 
