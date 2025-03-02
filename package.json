@@ -1,6 +1,6 @@
 {
   "name": "event-sourcing-core",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A generic Event Sourcing and Domain Event management library for Node.js (TypeScript). Provides core infrastructure for implementing Event Sourcing, Aggregate management, and sagas, without including command/query layers.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
