@@ -54,6 +54,12 @@ export class EventSourcedRepository<TAggregate extends AggregateRoot, TState> {
 
         aggregate.rehydrateFromHistory(subsequentEvents);
 
+        const currentVersion = await this.eventStore.getLastVersion(
+            this.aggregateType,
+            aggregateId,
+        );
+        aggregate.setVersion(currentVersion);
+
         return aggregate;
     }
 

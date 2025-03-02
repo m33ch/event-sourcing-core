@@ -25,12 +25,10 @@ export class InMemoryEventStore implements EventStore {
         expectedVersion: number,
     ): Promise<void> {
         const key = this.getKey(aggregateType, aggregateId);
-        const current = this.streams.get(key) || [];
 
-        // get the current version
-        const currentVersion = current.reduce(
-            (max, e) => Math.max(max, e.version),
-            0,
+        const currentVersion = await this.getLastVersion(
+            aggregateType,
+            aggregateId,
         );
 
         if (currentVersion !== expectedVersion) {
@@ -39,8 +37,19 @@ export class InMemoryEventStore implements EventStore {
             );
         }
 
-        const updated = [...current, ...events];
+        const currentEvents = this.streams.get(key) || [];
+        const updated = [...currentEvents, ...events];
         this.streams.set(key, updated);
+    }
+
+    public async getLastVersion(
+        aggregateType: string,
+        aggregateId: string,
+    ): Promise<number> {
+        const key = this.getKey(aggregateType, aggregateId);
+        const events = this.streams.get(key) || [];
+
+        return events.reduce((max, e) => Math.max(max, e.version), 0);
     }
 
     private getKey(aggregateType: string, aggregateId: string) {

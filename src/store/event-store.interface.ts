@@ -17,6 +17,7 @@ export interface LoadOptions {
  * Contract for an Event Store that handles:
  * - Loading events from a stream
  * - Appending new events with concurrency control
+ * - Return last version of aggregate
  */
 export interface EventStore {
     loadEvents(
@@ -30,4 +31,5 @@ export interface EventStore {
         events: DomainEvent[],
         expectedVersion: number,
     ): Promise<void>;
+    getLastVersion(aggregateType: string, aggregateId: string): Promise<number>;
 }
