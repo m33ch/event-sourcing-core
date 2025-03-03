@@ -15,7 +15,7 @@ describe('BaseDomainEvent', () => {
         const aggregateType = 'TestAggregate';
         const aggregateId = 'agg-123';
         // Non passiamo payload, tenantId, correlationId, causationId, metadata
-        const event = new TestDomainEvent(aggregateType, aggregateId);
+        const event = new TestDomainEvent(aggregateType, aggregateId, {});
 
         // eventId: generato automaticamente e deve essere un UUID valido
         expect(event.eventId).toBeDefined();
@@ -78,13 +78,13 @@ describe('BaseDomainEvent', () => {
     });
 
     it('should update eventType based on concrete class name', () => {
-        const event = new TestDomainEvent('SomeType', 'some-id');
+        const event = new TestDomainEvent('SomeType', 'some-id', {});
         expect(event.eventType).toBe('TestDomainEvent');
     });
 
     it('should generate new eventId for each instance', () => {
-        const event1 = new TestDomainEvent('A', '1');
-        const event2 = new TestDomainEvent('A', '1');
+        const event1 = new TestDomainEvent('A', '1', {});
+        const event2 = new TestDomainEvent('A', '1', {});
         expect(event1.eventId).not.toBe(event2.eventId);
         expect(uuidValidate(event1.eventId)).toBe(true);
         expect(uuidValidate(event2.eventId)).toBe(true);

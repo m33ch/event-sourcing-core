@@ -8,7 +8,11 @@ import { v4 as uuidv4 } from 'uuid';
  * Concrete subclasses (e.g., CustomerCreatedEvent) can extend it,
  * providing their own payload and using the class name as the eventType.
  */
-export abstract class BaseDomainEvent implements DomainEvent {
+export abstract class BaseDomainEvent<
+    Payload = Record<string, unknown>,
+    Metadata = Record<string, unknown>,
+> implements DomainEvent<Payload, Metadata>
+{
     public readonly eventId: string;
     public readonly eventType: string;
     public readonly aggregateType: string;
@@ -19,17 +23,17 @@ export abstract class BaseDomainEvent implements DomainEvent {
     public readonly tenantId?: string;
     public readonly correlationId?: string;
     public readonly causationId?: string;
-    public readonly metadata?: Record<string, unknown>;
-    public readonly payload: Record<string, unknown>;
+    public readonly metadata?: Metadata;
+    public readonly payload: Payload;
 
     constructor(
         aggregateType: string,
         aggregateId: string,
-        payload: Record<string, unknown> = {},
+        payload: Payload,
         tenantId?: string,
         correlationId?: string,
         causationId?: string,
-        metadata?: Record<string, unknown>,
+        metadata?: Metadata,
     ) {
         this.eventId = uuidv4();
         this.eventType = this.constructor.name;

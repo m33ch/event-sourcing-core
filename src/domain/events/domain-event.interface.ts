@@ -1,4 +1,7 @@
-export interface DomainEvent {
+export interface DomainEvent<
+    Payload = Record<string, unknown>,
+    Metadata = Record<string, unknown>,
+> {
     /**
      * Unique identifier of the event (UUID).
      */
@@ -52,12 +55,12 @@ export interface DomainEvent {
     /**
      * Arbitrary metadata (e.g., user, IP, context).
      */
-    metadata?: Record<string, unknown>;
+    metadata?: Metadata;
 
     /**
      * Payload of the event.
      */
-    payload: Record<string, unknown>;
+    payload: Payload;
 
     /**
      * Determines if it is a deletion event.
